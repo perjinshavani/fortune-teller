@@ -5,7 +5,7 @@ import se.nackademin.gui.FortuneTellerGui;
 public class FortuneTeller {
     MagicNumbers magicNumbers;
     FortuneTellerGui fortuneTellerGui;
-
+    Translator translator;
     /*
      * Returns a fortune based on name, income, location, age and height
      *
@@ -18,7 +18,14 @@ public class FortuneTeller {
      */
     public String calculate() {
         //TODO: Implement
-        return "Not implemented!";
+        return translator.getTranslation
+		(
+		magicNumbers.calculateA(),
+		magicNumbers.calculateB(),
+		magicNumbers.calculateC(),
+		magicNumbers.calculateD(),
+                magicNumbers.calculateE()
+		);
     }
 
     public static void main(String[] args) {
@@ -28,7 +35,7 @@ public class FortuneTeller {
     FortuneTeller() {
         fortuneTellerGui = new FortuneTellerGui(this);
         magicNumbers = new MagicNumbers();
-
+        translator = new Translator();
     }
 
     public boolean setName(String name) {
@@ -42,7 +49,7 @@ public class FortuneTeller {
         try {
             output = Integer.valueOf(input);
         } catch (NumberFormatException numberFormatException) {
-            //if an exception is caught we'll return null
+          
         }
         return output;
     }
